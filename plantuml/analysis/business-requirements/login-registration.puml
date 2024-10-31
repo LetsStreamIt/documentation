@@ -1,0 +1,10 @@
+@startuml login-registration
+left to right direction
+actor User
+rectangle Auth-Service {
+    usecase Login as "Login"
+    usecase Register as "Register"
+}
+User --> Login
+User --> Register
+@enduml
