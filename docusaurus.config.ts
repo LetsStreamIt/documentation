@@ -30,16 +30,12 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
-  
-
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
           routeBasePath: '/', // Serve the docs at the site's root
-          id: "rooot"
         },
         blog: false, // Optional: disable the blog plugin
         // .,
@@ -49,7 +45,6 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
