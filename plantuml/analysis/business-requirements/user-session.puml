@@ -1,0 +1,39 @@
+@startuml user-session
+left to right direction
+
+:Authenticated User: as AuthUser
+:User in Session: as SessionUser
+:Authenticated User: as AuthUser2
+:User in Session: as SessionUser2
+
+rectangle "Session" {
+
+    usecase LeaveSession as "Leave Session"
+
+    rectangle "Video" {
+        usecase PlayVideo as "Play Video"
+        usecase PauseVideo as "Pause Video"
+        usecase MoveVideo as "Move around timeline"
+    }
+
+    rectangle "Chat" {
+        usecase SendMessage as "Send Message"
+    }
+
+}
+
+AuthUser <|- SessionUser
+AuthUser2 <|- SessionUser2
+
+SessionUser --> LeaveSession
+SessionUser --> PlayVideo
+SessionUser --> PauseVideo
+SessionUser --> MoveVideo
+SessionUser --> SendMessage
+
+SendMessage --> SessionUser2
+MoveVideo --> SessionUser2
+PlayVideo --> SessionUser2
+PauseVideo --> SessionUser2
+
+@enduml

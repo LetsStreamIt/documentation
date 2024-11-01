@@ -141,3 +141,63 @@ After the user is authenticated, it can perform numerous actions such as:
      - **A3**: User accesses a non-existing user's profile.
        1. System displays an error message.
        2. The user goes back to the home page.
+
+## User in a Session
+
+When the user is in a session, it can perform actions such as:
+
+- Leave the session
+- Send a message
+- Play the video
+- Pause the video
+- Move the video to a specific time
+
+![User in a Session](/img/analysis/business-requirements/user-session.svg)
+
+1. **Leave Session**
+
+   - **Actor**: User in a Session
+   - **Preconditions**: User is in a session.
+   - **Postconditions**: User is not in the session.
+   - **Main Success Scenario**
+     1. User clicks on the leave session button.
+     2. System removes the user from the session.
+     3. System redirects the user to the home page.
+
+2. **Send Message**
+
+   - **Actor**: User in a Session
+   - **Preconditions**: User is in a session.
+   - **Postconditions**: Message is sent.
+   - **Main Success Scenario**
+     1. User fills in the message form.
+     2. User submits the message form.
+     3. System sends the message to the session.
+     4. System displays the message in the session.
+
+3. **Play Video**
+
+   - **Actor**: User in a Session
+   - **Preconditions**: User is in a session.
+   - **Postconditions**: Video is playing.
+   - **Main Success Scenario**
+     1. User clicks on the play button.
+     2. System plays the video.
+
+4. **Pause Video**
+
+   - **Actor**: User in a Session
+   - **Preconditions**: User is in a session.
+   - **Postconditions**: Video is paused.
+   - **Main Success Scenario**
+     1. User clicks on the pause button.
+     2. System pauses the video.
+
+5. **Move Video to a Specific Time**
+   - **Actor**: User in a Session
+   - **Preconditions**: User is in a session.
+   - **Postconditions**: Video is moved to a specific time.
+   - **Main Success Scenario**
+     1. User fills in the time form.
+     2. User submits the time form.
+     3. System moves the video to the specific time.
