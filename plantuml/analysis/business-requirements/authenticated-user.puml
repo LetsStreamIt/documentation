@@ -1,0 +1,33 @@
+@startuml authenticated-user
+left to right direction
+
+actor "Authenticated User"
+actor User
+
+rectangle "LetsStreamIt" {
+
+    rectangle "Authentication" {
+        usecase Logout as "Logout"
+    }
+
+    rectangle "Profile" {
+        usecase ViewProfile as "View Profile"
+        usecase EditProfile as "Edit Profile"
+    }
+
+    rectangle "Session" {
+        usecase CreateSession as "Create Session"
+        usecase JoinSession as "Join Session"
+    }
+
+}
+
+"Authenticated User" --> Logout
+"Authenticated User" --> ViewProfile
+"Authenticated User" --> EditProfile
+"Authenticated User" --> CreateSession
+"Authenticated User" --> JoinSession
+
+ViewProfile --> User
+
+@enduml
