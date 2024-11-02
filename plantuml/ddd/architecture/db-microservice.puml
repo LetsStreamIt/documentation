@@ -1,0 +1,19 @@
+@startuml db-microservice
+
+component "Database" as db
+component "Microservice" as ms {
+    port " " as api
+    component "Logic" as logic
+    interface "Repository" as IRepo
+    component "DBRepository" as repository
+}
+
+
+repository -right- api
+
+api - [db]
+
+logic - [IRepo]
+IRepo - [repository]
+
+@enduml
