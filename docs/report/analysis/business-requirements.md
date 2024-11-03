@@ -160,7 +160,7 @@ When the user is in a Session, it can perform actions such as:
 - Pause the video
 - Move the video to a specific time
 
-![User in a Session](/img/analysis/business-requirements/user-Session.svg)
+![User in a Session](/img/analysis/business-requirements/user-session.svg)
 
 1. **Leave Session**
 
