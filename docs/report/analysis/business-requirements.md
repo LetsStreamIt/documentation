@@ -54,8 +54,8 @@ After the user is authenticated, it can perform numerous actions such as:
 
 - Logout
 - Modify its profile
-- Create a new session
-- Join a session
+- Create a new Session
+- Join an existing Session
 - Look at another user's profile
 
 ![Authenticated User](/img/analysis/business-requirements/authenticated-user.svg)
@@ -93,35 +93,43 @@ After the user is authenticated, it can perform numerous actions such as:
    - **Preconditions**: User is authenticated in the system.
    - **Postconditions**: Session is created.
    - **Main Success Scenario**
-     1. User accesses the create session page.
-     2. User fills in the session form.
-     3. User submits the session form.
-     4. System validates the session form.
-     5. System creates the session.
-     6. System redirects the user to the session page.
+     1. User accesses the create Session popup.
+     2. User fills in the Session form.
+     3. User submits the Session form.
+     4. System validates the Session form.
+     5. System creates the Session.
+     6. System redirects the user to the Session page, directly joining him to the Session. 
    - **Extensions**
-     - **A1**: User is already in a session.
+     - **A1**: User is already joined in a Session.
        1. System displays an error message.
        2. The user goes back to the home page.
-     - **A2**: User submits an invalid session form.
+     - **A2**: User submits an invalid Session form.
+       1. System displays an error message.
+       2. The user returns to step 2 and corrects the form.
+     - **A3**: User token is not valid.
        1. System displays an error message.
        2. The user returns to step 2 and corrects the form.
 
 4. **Join Session**
 
    - **Actor**: Authenticated User
-   - **Preconditions**: User is authenticated in the system.
-   - **Postconditions**: User is in the session.
+   - **Preconditions**: 
+     1. User is authenticated in the system.
+     2. The specified Session has been previously created.
+   - **Postconditions**: User is in the Session.
    - **Main Success Scenario**
-     1. User accesses the join session page using the session url.
-     2. System validates the session url.
-     3. System adds the user to the session.
-     4. System redirects the user to the session page.
+     1. User accesses the Session page by specifying its id in the URL.
+     2. System validates the Session URL.
+     3. System adds the user to the Session.
+     4. System updates the page with current Session information.
    - **Extensions**
-     - **A1**: User is already in a session.
+     - **A1**: User is already in a Session.
        1. System displays an error message.
        2. The user goes back to the home page.
-     - **A2**: User accesses an invalid session url.
+     - **A2**: User accesses an invalid Session URL.
+       1. System displays an error message.
+       2. The user goes back to the home page.
+     - ***A3**: User token is not valid.
        1. System displays an error message.
        2. The user goes back to the home page.
 
@@ -144,60 +152,60 @@ After the user is authenticated, it can perform numerous actions such as:
 
 ## User in a Session
 
-When the user is in a session, it can perform actions such as:
+When the user is in a Session, it can perform actions such as:
 
-- Leave the session
+- Leave the Session
 - Send a message
 - Play the video
 - Pause the video
 - Move the video to a specific time
 
-![User in a Session](/img/analysis/business-requirements/user-session.svg)
+![User in a Session](/img/analysis/business-requirements/user-Session.svg)
 
 1. **Leave Session**
 
    - **Actor**: User in a Session
-   - **Preconditions**: User is in a session.
-   - **Postconditions**: User is not in the session.
+   - **Preconditions**: User is in a Session.
+   - **Postconditions**: User is not in the Session.
    - **Main Success Scenario**
-     1. User clicks on the leave session button.
-     2. System removes the user from the session.
+     1. User clicks on the leave Session button.
+     2. System removes the user from the Session.
      3. System redirects the user to the home page.
 
 2. **Send Message**
 
    - **Actor**: User in a Session
-   - **Preconditions**: User is in a session.
+   - **Preconditions**: User is in a Session.
    - **Postconditions**: Message is sent.
    - **Main Success Scenario**
      1. User fills in the message form.
      2. User submits the message form.
-     3. System sends the message to the session.
-     4. System displays the message in the session.
+     3. System sends the message to the Session.
+     4. System displays the message in the Session.
 
 3. **Play Video**
 
    - **Actor**: User in a Session
-   - **Preconditions**: User is in a session.
+   - **Preconditions**: User is in a Session.
    - **Postconditions**: Video is playing.
    - **Main Success Scenario**
      1. User clicks on the play button.
-     2. System plays the video.
+     2. System plays the Session video.
 
 4. **Pause Video**
 
    - **Actor**: User in a Session
-   - **Preconditions**: User is in a session.
+   - **Preconditions**: User is in a Session.
    - **Postconditions**: Video is paused.
    - **Main Success Scenario**
      1. User clicks on the pause button.
-     2. System pauses the video.
+     2. System pauses the Session video.
 
 5. **Move Video to a Specific Time**
    - **Actor**: User in a Session
-   - **Preconditions**: User is in a session.
+   - **Preconditions**: User is in a Session.
    - **Postconditions**: Video is moved to a specific time.
    - **Main Success Scenario**
      1. User fills in the time form.
      2. User submits the time form.
-     3. System moves the video to the specific time.
+     3. System moves the Session video to the specific time.
