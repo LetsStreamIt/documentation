@@ -32,7 +32,7 @@ const config: Config = {
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      'classic',
       {
         docs: {
           routeBasePath: '/', // Serve the docs at the site's root
@@ -49,7 +49,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Report',
+      title: "LetsStreamIt",
       logo: {
         alt: 'logo',
         src: 'img/logo.svg',
