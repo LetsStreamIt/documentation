@@ -28,3 +28,24 @@ This section describes the components and connectors of the system and how they 
 Each microservice that requires a database will have its own database. This will allow each microservice to manage its own data independently. It will also make it easier to scale the system by scaling individual microservices.
 
 ![Database per Microservice](/img/ddd/architecture/db-microservice.svg)
+
+## Interactions
+
+Each microservice will expose a REST API that other microservices can use to interact with it. The frontend service will interact with the other microservices using their REST APIs. The microservices will interact with each other using REST APIs or message queues.
+
+We decided against using an API gateway for this system because it adds unnecessary complexity.
+Only having 3 microservices, it is not necessary to have an API gateway. We can directly call the microservices from the frontend service. Also an API gateway would introduce a single point of failure and a performance bottleneck, which would be undesirable for our system.
+
+## Architecture
+
+The following diagram shows the architecture of the system:
+
+![Architecture](/img/ddd/architecture/architecture.svg)
+
+## Deployment View
+
+The system will be deployed using Docker containers. Orchestrating the containers will be done using Docker Compose. This will make it easier to deploy and scale the system.
+
+The following diagram shows the deployment view of the system:
+
+![Deployment](/img/ddd/architecture/deployment.svg)

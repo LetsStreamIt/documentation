@@ -1,0 +1,46 @@
+@startuml
+
+node "User Device" as userDevice {
+    [Desktop PC] <<device>>
+    [Mobile Phone] <<device>>
+}
+
+cloud Internet
+
+node "Frontend Service" <<container>> as frontend {
+    [Compiled Vue App] <<Frontend>>
+    [Nginx] <<WebServer>>
+}
+
+node "Session Service" <<container>> as session {
+    [Session Microservice] <<Service>>
+}
+
+node "Auth Service" <<container>> as auth {
+    [Auth Microservice] <<Service>>
+}
+
+node "Auth Database" <<container>>
+
+node "Profile Service" <<container>> as profile {
+    [Profile Microservice] <<Service>>
+}
+
+node "Profile Database" <<container>>
+
+[Desktop PC] --> Internet : HTTP
+[Mobile Phone] --> Internet : HTTP
+
+Internet --> Nginx : HTTP
+
+Nginx ..> "Compiled Vue App" : <<uses>>
+
+Nginx -left- "Session Microservice" : <<intranet>>
+Nginx -right- "Auth Microservice" : <<intranet>>
+Nginx -down- "Profile Microservice" : <<intranet>>
+
+"Auth Microservice" -right-> "Auth Database" : <<uses>>
+"Profile Microservice" -right-> "Profile Database" : <<uses>>
+
+
+@enduml

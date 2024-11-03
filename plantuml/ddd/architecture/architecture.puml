@@ -1,0 +1,30 @@
+@startuml architecture
+
+component "Frontend" << Service >>
+component "Session" << Service >>
+component "Profile" << Service >>
+component "Profile DB" as PDB << Component >>
+component "Authentication" << Service >>
+component "Authentication DB" as ADB << Component >>
+
+actor "Mobile User" as MU
+actor "Web User" as WU
+
+MU -up- [Frontend]
+WU -up- [Frontend]
+
+Frontend -left- [Session]
+Frontend -up- [Profile]
+Frontend -right- [Authentication]
+
+Profile - [Authentication]
+Profile - [PDB]
+
+Session - [Authentication]
+Session - [Profile]
+
+Authentication - [ADB]
+Authentication - [Profile]
+
+
+@enduml
