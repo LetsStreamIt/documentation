@@ -52,7 +52,7 @@ const config: Config = {
       title: "LetsStreamIt",
       logo: {
         alt: 'logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.jpg',
       },
       items: [
         {
