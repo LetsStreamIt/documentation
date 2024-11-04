@@ -1,0 +1,88 @@
+---
+sidebar_position: 6
+---
+
+# Microservices Design
+
+After identifying the application requirements and the main components of the architecture, we can now define the microservices design of the system.
+
+Each service will be responsible for a specific set of features and will communicate with other services through well-defined APIs. This will allow us to develop and deploy each service independently, making it easier to scale the system and add new features in the future.
+
+The decomposition of the system allows us to use different technologies for each service, as well as to scale each service independently based on its specific requirements.
+
+## API Design
+
+Each microservice will either expose a REST API or a WebSocket API for communication with other services. The API will be designed to be simple, consistent, and easy to use. We will follow RESTful design principles for the REST APIs and use WebSockets for real-time communication between services.
+
+The API will be versioned to ensure backward compatibility and allow for future changes without breaking existing clients.
+
+The API will be documented using OpenAPI (formerly known as Swagger) to provide a clear and comprehensive reference for developers who want to integrate with the system.
+
+### Auth Service
+
+The Auth service will expose a REST API for user authentication and authorization. It will provide endpoints for user registration, login, and logout.
+
+<Summary title="Feature: Authentication">
+
+```gherkin
+Feature: Authentication
+  As a user
+  I want to be able to authenticate with the system
+  So that I can access my account
+
+Scenario: User registration
+Given a user wants to register
+When the user provides valid registration data
+Then the user should be registered successfully
+
+Scenario: User login
+Given a registered user wants to login
+When the user provides valid login credentials
+Then the user should be logged in successfully
+
+Scenario: User logout
+Given a logged-in user wants to logout
+When the user logs out
+Then the user should be logged out successfully
+
+```
+
+</Summary>
+
+[OpenAPI Specification](https://letsstreamit.github.io/documentation/docs/api/openapi/auth/)
+
+### Profile Service
+
+The Profile service will expose a REST API for managing user profiles. It will provide endpoints for viewing and editing user profiles.
+
+<Summary title="Feature: Profile">
+
+```gherkin
+Feature: Profile
+  As a user
+  I want to be able to view and edit my profile
+  So that I can update my information
+
+Scenario: View profile
+Given a logged-in user wants to view their profile
+When the user requests the profile
+Then the user profile should be returned
+
+Scenario: Edit profile
+Given a logged-in user wants to edit their profile
+When the user provides updated profile information
+Then the user's profile should be updated
+
+```
+
+</Summary>
+
+[OpenAPI Specification](https://letsstreamit.github.io/documentation/docs/api/openapi/profile/)
+
+### Session Service
+
+The Session service will expose a WebSocket API for managing sessions. It will provide endpoints for creating, joining, and leaving sessions. It will also handle video playback synchronization and chat functionality.
+
+{/* TODO: Add Gherkin feature for Session service */}
+
+{/* TODO: Add AsyncAPI Specification for Session service */}

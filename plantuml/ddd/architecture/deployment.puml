@@ -1,4 +1,4 @@
-@startuml
+@startuml deployment
 
 node "User Device" as userDevice {
     [Desktop PC] <<device>>

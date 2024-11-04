@@ -23,7 +23,7 @@ The **frontend service** did not appear in the bounded contexts identified in th
 
 This section describes the components and connectors of the system and how they interact with each other.
 
-### Database per MicroserviceService
+### Database per Microservice Service
 
 Each microservice that requires a database will have its own database. This will allow each microservice to manage its own data independently. It will also make it easier to scale the system by scaling individual microservices.
 

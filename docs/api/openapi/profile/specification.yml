@@ -1,0 +1,169 @@
+openapi: 3.0.0
+
+info:
+  title: Profile API
+  description: User profile microservice API
+  version: 1.0.0
+
+tags:
+  - name: profile
+    description: User profile related operations
+
+paths:
+  /users/:email:
+    get:
+      tags:
+        - profile
+      summary: Get user profile
+      description: Get user profile by email
+      parameters:
+        - name: email
+          in: path
+          description: User email
+          required: true
+          schema:
+            type: string
+            format: email
+        - name: Authorization
+          in: header
+          description: Bearer token
+          required: true
+          schema:
+            type: string
+            format: jwt
+      responses:
+        "200":
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    format: email
+                  username:
+                    type: string
+                  bio:
+                    type: string
+                  videos:
+                    type: array
+                    items:
+                      type: string
+        "400":
+          description: Invalid request
+        "401":
+          description: Unauthorized
+
+  /users:
+    post:
+      tags:
+        - profile
+      summary: Create user profile
+      description: Create user profile with email and bio
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer token
+          required: true
+          schema:
+            type: string
+            format: jwt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                username:
+                  type: string
+                bio:
+                  type: string
+                videos:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - email
+                - username
+      responses:
+        "201":
+          description: User profile created successfully
+        "400":
+          description: Invalid request
+        "401":
+          description: Unauthorized
+
+  /users/update:
+    post:
+      tags:
+        - profile
+      summary: Update user profile
+      description: Update user profile with email and bio
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer token
+          required: true
+          schema:
+            type: string
+            format: jwt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                bio:
+                  type: string
+              required:
+                - email
+                - bio
+      responses:
+        "200":
+          description: User profile updated successfully
+        "400":
+          description: Invalid request
+        "401":
+          description: Unauthorized
+
+  /videos:
+    post:
+      tags:
+        - profile
+      summary: Add video to user profile
+      description: Add video to user profile by email
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer token
+          required: true
+          schema:
+            type: string
+            format: jwt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                video:
+                  type: string
+              required:
+                - video
+      responses:
+        "200":
+          description: Video added to user profile successfully
+        "400":
+          description: Invalid request
+        "401":
+          description: Unauthorized
