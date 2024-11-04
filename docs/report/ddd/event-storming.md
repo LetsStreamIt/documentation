@@ -45,12 +45,19 @@ The team identifies the commands that trigger the domain events, and their respe
 ![Commands](/img/ddd/event_storming/commands.jpg)
 
 
-## Policies
+## Reactions
 
-Policies are commands without an actor, that are executed in the system.
+Reactions are something that happen when something else happens.
+They outline actions triggered when an event occurs.
 
+![Reactions](/img/ddd/event_storming/reactions.jpg)
 
-![Policies](/img/ddd/event_storming/policies.jpg)
+## Read models
+
+Read models encompass data that is read in a particular context.
+
+![Read Models](/img/ddd/event_storming/read_models.jpg)
+
 
 ## Aggregates
 
