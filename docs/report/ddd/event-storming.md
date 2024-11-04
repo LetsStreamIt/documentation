@@ -79,4 +79,4 @@ The domain of this project is however rather simple and the separation between t
 The bounded contexts of the system are:
 - `Auth`: manages everything concern user authentication;
 - `Profile`: manages everything concern user profile;
-- `Session`: manages everything concern a streaming session;
+- `Session`: manages everything concern a streaming session.
