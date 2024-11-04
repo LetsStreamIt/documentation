@@ -101,7 +101,7 @@ In the Session context, they correspond to actions performed to communicate back
 #### Chat
 
 - *emitNotificationToSession*: executed whenever the aggregate wants to emit a Notification Message to the Session;
-- *emitTextMessagesToClient*: executed whenever the aggregate wants to emit a Text Message to a single User;
+- *emitTextMessagesToClient*: executed whenever the aggregate wants to emit one or more Text Messages to a single User;
 - *emitTextMessagesToSession*: executed whenever the aggregate wants to emit one or more Text Messages to all the Users connected to the Session.
 
 #### Video
