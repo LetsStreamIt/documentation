@@ -1,0 +1,29 @@
+@startuml
+
+<style>
+  diamond {
+    BackgroundColor #black
+}
+</style>
+
+[*] --> Connected: connect
+
+Connected --> Authenticated: userTokenCommand[isValid(token)]/response(SUCCESS)
+
+Authenticated --> Authenticated: createSessionCommand[isValid(videoURL)]\n/response(SUCCESS, sessionName);react()
+Authenticated --> Joined: joinSessionCommand[isExisting(sessionName)]\n/response(SUCCESS, videoId);react()
+
+Joined --> Authenticated: leaveSessionCommand\n/response(SUCCESS);react()
+Joined --> Joined: sendMessageCommand ||\nplayVideoCommand || stopVideoCommand\n/response(SUCCESS);react()
+
+state choice1 <<choice>>
+
+Connected --> choice1
+Joined --> choice1
+Authenticated --> choice1
+
+choice1 --> [*]: disconnect
+
+
+
+@enduml
