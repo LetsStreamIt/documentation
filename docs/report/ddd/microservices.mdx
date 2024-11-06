@@ -31,19 +31,19 @@ Feature: Authentication
   So that I can access my account
 
 Scenario: User registration
-Given a user wants to register
-When the user provides valid registration data
-Then the user should be registered successfully
+Given I want to register
+When I provide a valid registration data
+Then I should be registered successfully
 
 Scenario: User login
-Given a registered user wants to login
-When the user provides valid login credentials
-Then the user should be logged in successfully
+Given I am a registered user
+When I provide a valid login credentials
+Then I should be logged in successfully
 
 Scenario: User logout
-Given a logged-in user wants to logout
-When the user logs out
-Then the user should be logged out successfully
+Given I am a logged-in user
+When I log out
+Then I should be logged out successfully
 
 ```
 
@@ -64,14 +64,14 @@ Feature: Profile
   So that I can update my information
 
 Scenario: View profile
-Given a logged-in user wants to view their profile
-When the user requests the profile
-Then the user profile should be returned
+Given I am a logged-in user
+When I request to view a user profile
+Then The user profile should be returned
 
 Scenario: Edit profile
-Given a logged-in user wants to edit their profile
-When the user provides updated profile information
-Then the user's profile should be updated
+Given I am a logged-in user
+When I update my profile information
+Then My user profile should be updated
 
 ```
 
@@ -83,6 +83,54 @@ Then the user's profile should be updated
 
 The Session service will expose a WebSocket API for managing sessions. It will provide endpoints for creating, joining, and leaving sessions. It will also handle video playback synchronization and chat functionality.
 
-{/* TODO: Add Gherkin feature for Session service */}
+<Summary title="Feature: Session">
 
-{/* TODO: Add AsyncAPI Specification for Session service */}
+```gherkin
+Feature: Session
+  As a user
+  I want to be able to create and join a streaming session
+  So that I can interact with the Youtube video and the chat
+
+Scenario: Create a Session
+Given I am a user logged-in
+When I create a streaming Session by providing a correct Youtube URL
+Then I should receive the Session name
+
+Scenario: Join a Session
+Given I am a user logged-in
+When I join a streaming Session by providing a correct Session name
+Then I should receive the Youtube video Id
+
+Scenario: Leave a Session
+Given I am logged-in user and I am joined in a Session
+When I leave the Session
+Then I should be successfully disconnected from the Session 
+
+Scenario: Play/stop/move the timeline of a Session Video
+Given I am logged-in user and I am joined in a Session
+When I play/stop/move the timeline of the Session Video
+Then I should receive a Video State as a synchronization message
+
+Scenario: Join a Session
+Given I am a user logged-in
+When I join a streaming Session by providing a correct Session name
+Then I should receive the Youtube video Id
+
+```
+
+</Summary>
+
+[AsyncAPI Specification](https://letsstreamit.github.io/session-service/api/)
+
+## Clean Architecture
+
+
+![Clean Architecture](/img/ddd/detailed_design/clean_architecture.png)
+
+The design of all the microservices follow the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+This architecture allows to separate the domain from the implementation details. The architecture is composed of multiple layers and is based on the *Dependency Rule*,
+i.e. each layer can only depend on the inner layers. The adopted layers are the following:
+- Domain. It's the innermost layer and should contain the business logic of the microservice. It comprises DDD aggregates, value objects, entities, factories and repositories;
+- Application. Should contain services;
+- Presentation. Should handle data serialization/deserialization for sending/receiving data with other microservices;
+- Infrastructure. Should manage the communication with the external microservices.
