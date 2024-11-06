@@ -7,6 +7,9 @@ const config: Config = {
   title: "Let's Stream It Documentation",
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
+  markdown: {
+    mermaid: true,
+  },
 
   // Set the production url of your site here
   url: "https://letsstreamit.github.io/",
@@ -22,6 +25,9 @@ const config: Config = {
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+
+  // Add the Mermaid plugin
+  themes: ['@docusaurus/theme-mermaid'],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
