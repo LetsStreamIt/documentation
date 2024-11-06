@@ -19,17 +19,26 @@ Authentication context is responsible for managing user authentication to the Le
 
 ### Ubiquitous Language
 
+| Term          | Meaning                                  |
+| ------------- | ---------------------------------------- |
+| User          | Anyone registered to the system          |
+| Token         | A unique identifier for a User           |
+| Access Token  | A token used to authenticate the User    |
+| Refresh Token | A token used to refresh the Access Token |
+
 ### Commands
-### Events
-### Reactions
 
 ## Profile
 
 Profile context is responsible for managing the user profile information in the LetsStreamIt platform. It manages the user's username, bio, and watched videos.
 
-### Commands
-### Events
-### Reactions
+### Ubiquitous Language
+
+| Term    | Meaning                         |
+| ------- | ------------------------------- |
+| User    | Anyone registered to the system |
+| Profile | User's profile information      |
+| Video   | A Youtube video                 |
 
 ## Session
 
