@@ -26,8 +26,6 @@ Authentication context is responsible for managing user authentication to the Le
 | Access Token  | A token used to authenticate the User    |
 | Refresh Token | A token used to refresh the Access Token |
 
-### Commands
-
 ## Profile
 
 Profile context is responsible for managing the user profile information in the LetsStreamIt platform. It manages the user's username, bio, and watched videos.
