@@ -1,0 +1,32 @@
+@startuml registration-sequence
+
+actor Person
+
+participant "Frontend" as Frontend
+
+participant "Auth Service" as AuthService
+
+participant "Profile Service" as ProfileService
+
+Person -> Frontend: Register
+
+Frontend -> AuthService: Register(email, password, username)
+
+AuthService -> AuthService: createUser(email, password)
+
+AuthService -> ProfileService: createUserProfile(email, username)
+
+ProfileService -> ProfileService: createUserProfile(email, username)
+
+alt Successfull profile creation
+    ProfileService -> AuthService: Success
+    AuthService -> Frontend: Success
+    Frontend -> Person: Success
+else Failed profile creation
+    ProfileService -> AuthService: Failed
+    AuthService -> AuthService: deleteUser(email)
+    AuthService -> Frontend: Failed
+    Frontend -> Person: Failed
+end
+
+@enduml

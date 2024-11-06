@@ -1,0 +1,44 @@
+@startuml profile-class
+
+class User {
+    email: string
+    username: string
+    bio: Option[string]
+    videos: Option[List[string]]
+}
+
+interface UserRepository {
+    getUser(email: string): Future[User]
+    createUser(user: User): Future[Either[Exception, string]]
+    updateUser(user: User): Future[Either[Exception, string]]
+    addVideo(email: string, video: string): Future[Either[Exception, string]]
+}
+
+class UserService {
+    findUserByEmail(email: string): Future[Option[User]]
+    createUser(user: User): Future[Either[Exception, string]]
+    updateUser(user: User): Future[Either[Exception, string]]
+    addVideo(email: string, video: string): Future[Either[Exception, string]]
+}
+
+class UserUseCase {
+    findUserByEmail(email: string): Future[Option[User]]
+    createUser(user: User): Future[Either[Exception, string]]
+    updateUser(user: User): Future[Either[Exception, string]]
+    addVideo(email: string, video: string): Future[Either[Exception, string]]
+}
+
+class UserController {
+    findUserByEmail(email: string): Future[Option[User]]
+    createUser(user: User): Future[Either[Exception, string]]
+    updateUser(user: User): Future[Either[Exception, string]]
+    addVideo(email: string, video: string): Future[Either[Exception, string]]
+}
+
+UserController o-up- UserUseCase
+UserUseCase o-up- UserService
+UserService o-up- UserRepository
+
+UserRepository -down-> User : creates >
+
+@enduml

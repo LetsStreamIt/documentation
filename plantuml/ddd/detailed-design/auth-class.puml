@@ -1,0 +1,72 @@
+@startuml auth-class
+
+interface IUser {
+    email: string
+    password: string
+}
+
+class TokenData {
+    id: string
+    email: string
+}
+
+interface IAuthRepository {
+    createUser(email: string, password: string): Promise<IUser>
+    findUserByEmail(email: string): Promise<IUser>
+    deleteUser(email: string): Promise<void>
+}
+
+interface IAuthService {
+    register(email: string, password: string): Promise<IUser>
+    login(email: string, password: string): Promise<string>
+    logout(email: string): Promise<void>
+}
+
+class AuthUseCase {
+    register(email: string, password: string): Promise<IUser>
+    login(email: string, password: string): Promise<string>
+    logout(email: string): Promise<void>
+}
+
+interface ITokenService {
+    generateToken(data: TokenData, expiresIn: string): string
+    validateToken(accessToken: string): Promise<boolean>
+    refreshToken(refreshToken: string): Promise<string>
+    getData(accessToken: string): Promise<TokenData>
+}
+
+class TokenUseCase {
+    generateToken(data: TokenData, expiresIn: string): string
+    validateToken(accessToken: string): Promise<boolean>
+    refreshToken(refreshToken: string): Promise<string>
+    getData(accessToken: string): Promise<TokenData>
+}
+
+class ProfileRepository {
+    createUserProfile(email: string, username: string, accessToken: string): Promise<void>
+}
+
+class ProfileService {
+    createUserProfile(email: string, username: string, accessToken: string): Promise<void>
+}
+
+class ProfileUseCase {
+    createUserProfile(email: string, username: string, accessToken: string): Promise<void>
+}
+
+IAuthService o-up- IAuthRepository
+AuthUseCase o-up- IAuthService
+
+IAuthService o-left- TokenUseCase : uses >
+IAuthService o-right- ProfileUseCase : uses >
+
+TokenUseCase o-down- ITokenService
+
+ProfileService o-up- ProfileRepository
+ProfileUseCase o-up- ProfileService
+
+IAuthRepository -up->  IUser : creates >
+
+TokenUseCase -up-> TokenData : uses >
+
+@enduml
