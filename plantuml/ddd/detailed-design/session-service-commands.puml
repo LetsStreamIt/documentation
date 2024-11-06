@@ -1,0 +1,66 @@
+@startuml
+
+enum CommandType {
+    USER_TOKEN,
+    CREATE_SESSION,
+    JOIN_SESSION,
+    LEAVE_SESSION,
+    SEND_MSG,
+    STOP_VIDEO,
+    PLAY_VIDEO
+}
+
+interface ISessionCommand<X> {
+    type: CommandType
+    content: X
+}
+
+ISessionCommand *-u- "1" CommandType
+
+class SendMessageCommandContent {
+    user: User
+    sessionName: string
+    message: string
+    sessionReactions: ISessionReactions
+}
+ISessionCommand <|... SendMessageCommand: <<bind>>X::SendMessageCommandContent
+SendMessageCommand *.. "1" SendMessageCommandContent
+
+class UserTokenCommandContent {
+    token: string
+    profileServiceUtils: IProfileServiceUtils
+    authServiceUtils: IAuthServiceUtils
+}
+UserTokenCommand *.. "1" UserTokenCommandContent
+ISessionCommand <|... UserTokenCommand: <<bind>>X::UserTokenCommandContent
+
+class CreateSessionCommandContent {
+    user: User
+    videoUrl: string
+}
+CreateSessionCommand *.. "1" CreateSessionCommandContent
+ISessionCommand <|... CreateSessionCommand: <<bind>>X::CreateSessionCommandContent
+
+class SessionCommandContent {
+    user: User
+    sessionName: string
+    sessionReactions: ISessionReactions
+}
+JoinSessionCommand *.. "1" SessionCommandContent
+ISessionCommand <|... JoinSessionCommand: <<bind>>X::SessionCommandContent
+
+LeaveSessionCommand *.. "1" SessionCommandContent
+ISessionCommand <|... LeaveSessionCommand: <<bind>>X::SessionCommandContent
+
+class VideoCommandContent {
+    user: User
+    sessionName: string
+    timestamp: number
+    sessionReactions: ISessionReactions
+}
+PlayVideoCommand *.. "1" VideoCommandContent
+StopVideoCommand *.. "1" VideoCommandContent
+ISessionCommand <|... PlayVideoCommand: <<bind>>X::VideoCommandContent
+ISessionCommand <|... StopVideoCommand: <<bind>>X::VideoCommandContent
+
+@enduml

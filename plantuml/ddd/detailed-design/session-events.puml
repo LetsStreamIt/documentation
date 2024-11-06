@@ -1,0 +1,64 @@
+@startuml
+
+enum EventType {
+    SessionCreated,
+    UserJoinedSession,
+    UserLeftSession,
+    MessageSent,
+    VideoPlayed,
+    VideoStopped
+}
+
+interface ISessionEvent {
+    + type: EventType
+    + reactions: ISessionReactions
+}
+
+ISessionEvent *.. "1" EventType
+
+interface IEventBus {
+    + subscribe<X extends ISessionEvent>(\n\teventType: EventType, listener: (event: X) => Promise<void>\n): void
+    + publish(event: ISessionEvent): void
+}
+
+IEventBus --> ISessionEvent: <<uses>>
+
+class SessionCreatedEvent {
+    + type: EventType = SessionCreated
+    + sessionName: string
+}
+ISessionEvent <|.. SessionCreatedEvent
+
+class UserJoinedSessionEvent {
+    + type: EventType = UserJoinedSession
+    + user: User
+}
+ISessionEvent <|... UserJoinedSessionEvent
+
+
+class UserLeftSessionEvent  {
+    + type: EventType = UserLeftSession
+    + user: User
+}
+ISessionEvent <|... UserLeftSessionEvent
+
+class MessageSentEvent  {
+    + type: EventType = MessageSent
+    + textMessage: TextMessage
+}
+ISessionEvent <|... MessageSentEvent
+
+
+class VideoPlayedEvent  {
+   type: EventType = VideoPlayed
+   timestamp: number
+}
+ISessionEvent <|... VideoPlayedEvent
+
+class VideoStoppedEvent  {
+   type: EventType = VideoStopped
+   timestamp: number
+}
+ISessionEvent <|.. VideoStoppedEvent
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+
+interface IResponse<X> {
+  command: CommandType
+  content: X
+}
+
+class CreateSessionResponseContent {
+    status: ResponseStatus
+    sessionName: string
+}
+CreateSessionResponse *-u- "1" CreateSessionResponseContent
+CreateSessionResponse ...|> IResponse: <<bind>>X::CreateSessionResponseContent
+
+class JoinSessionResponseContent {
+    status: JoinSessionResponseStatus
+    videoId: string 
+}
+JoinSessionResponse *-u- "1" JoinSessionResponseContent
+JoinSessionResponse ...|> IResponse: <<bind>>X::JoinSessionResponseContent
+
+
+class UserTokenResponseContent {
+    status: ResponseStatus
+    tokenStatus: UserTokenResponseStatus
+    user: Optional<User>
+}
+UserTokenResponse *-u- "1" UserTokenResponseContent
+UserTokenResponse ...|> IResponse: <<bind>>X::UserTokenResponseContent
+
+
+PlayVideoResponse ...|> IResponse: <<bind>>X::ResponseStatus
+StopVideoResponse ...|> IResponse: <<bind>>X::ResponseStatus
+SendMessageResponse ...|> IResponse: <<bind>>X::ResponseStatus
+LeaveSessionResponse ...|> IResponse: <<bind>>X::ResponseStatus
+
+@enduml
