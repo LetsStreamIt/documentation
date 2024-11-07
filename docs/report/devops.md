@@ -23,14 +23,14 @@ To automate the release process, [Semantic Release](https://semantic-release.git
 
 ## Continuous Integration and Delivery
 
-In all the microservices repositories a Continuous Integration and Delivery pipeline is built, so that whenever a feature/fix/major update is made, a new release is triggered. The pipeline also ensures the project test always pass and that is follows strict code quality metrics.
+In all the microservices repositories a Continuous Integration and Delivery pipeline is built, so that whenever a feature/fix/major update is made, a new release is triggered. The pipeline also ensures the project tests always pass and that it follows strict code quality metrics.
 
 The same CI/CD pipeline is adopted by all the microservices and is composed of the following jobs:
 - `build`: is responsible for checking if the project successfully builds. A matrix of OS is provided: Ubuntu, MacOS, Windows;
 - `format`: is responsible for checking if the code is properly formatted;
 - `linter`: analyses the source code searching for errors and vulnerabilities;
 - `release`: semantic-release is run to check if a new release should be triggered, based on the commit messages. This job is run only whenever a push into the main branch is made.
-- `deploy-image`: builds and deploy a Docker image in Github Packages, based on the `Dockerfile` in the root directory of the microservice. Depends on the `release` job and it's run only whenever a new release is published.
+- `deploy-image`: builds and deploy a Docker image in Github Packages, based on the `Dockerfile` placed in the root directory of the microservice. Depends on the `release` job and it's run only whenever a new release is published.
 - `docs`: builds the code documentation of the project and publishes it into the Github Pages of the microservice repository. As `deploy-image`, it depends on the `release` job and it's triggered whenever a new release is published.
 - `success`: checks if the pipeline succeded.
 
@@ -47,7 +47,7 @@ flowchart LR
 ```
 
 
-## Other Git/GitHub features
+## Other Git(Hub) features
 
 ### Git Hooks
 
