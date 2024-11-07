@@ -1,0 +1,19 @@
+@startuml 
+
+interface ISessionService {
+  + handleCreateSessionCommand(command: CreateSessionCommand): Promise<CreateSessionResponse>
+  + handleUserTokenCommand(command: UserTokenCommand): Promise<UserTokenResponse>
+  + handleJoinSessionCommand(command: JoinSessionCommand): Promise<JoinSessionResponse>
+  + handleLeaveSessionCommand(command: LeaveSessionCommand): Promise<LeaveSessionResponse>
+  + handleSendMessageCommand(command: SendMessageCommand): Promise<SendMessageResponse>
+  + handlePlayVideoCommand(command: PlayVideoCommand): Promise<PlayVideoResponse>
+  + handleStopVideoCommand(command: StopVideoCommand): Promise<StopVideoResponse>
+}
+
+
+class SessionService implements ISessionService {}
+
+
+
+
+@enduml

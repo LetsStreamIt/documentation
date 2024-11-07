@@ -1,0 +1,28 @@
+@startuml
+
+interface IChatReactions {
+    emitNotificationToSession(notificationMessage: NotificationMessage): void
+    emitTextMessagesToClient(textMessages: TextMessage[]): void
+    emitTextMessagesToSession(textMessages: TextMessage[]): void
+}
+
+interface ISessionReactions {
+
+    + chatReactions: IChatReactions
+    + videoReactions: IVideoReactions
+
+    + joinUserToSession(): void
+    + leaveUserFromSessionAndDisconnect(): void
+
+}
+
+interface IVideoReactions {
+    + retreiveVideoState(): Promise<IVideoState>
+    + synchronizeClient(videoState: IVideoState): void
+    + synchronizeSession(videoState: IVideoState): void
+}
+
+ISessionReactions *.. "1" IVideoReactions
+ISessionReactions *.. "1" IChatReactions
+
+@enduml
