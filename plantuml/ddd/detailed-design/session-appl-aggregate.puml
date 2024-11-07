@@ -1,0 +1,36 @@
+@startuml
+
+class SessionService implements ISessionService {
+}
+
+interface IChat {
+    + registerEventHandlers(): void
+}
+
+interface IVideo {
+    + videoRef: string
+    + registerEventHandlers(): void
+}
+
+class Entity<X, Y> {
+    # id: X
+    # value: Y
+}
+
+class Session extends Entity {
+    + registerEventHandlers(): void
+    + isUserJoined(): boolean
+    + users(): UserRepository
+    + eventBus(): IEventBus
+    + chat(): IChat
+    + video(): IVideo  
+}
+
+SessionService *.. "1" SessionRepository
+SessionRepository *.. "n" Session
+
+Session *.. "1" IVideo
+Session *.. "1" IChat
+
+@enduml
+

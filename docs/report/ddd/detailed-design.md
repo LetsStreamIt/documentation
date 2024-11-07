@@ -3,6 +3,7 @@ sidebar_position: 6
 ---
 import Packages from '/img/ddd/detailed_design/session/packages.png';
 import ServiceApp from '/img/ddd/detailed_design/session/session-service-application.png';
+import Aggregates from '/img/ddd/detailed_design/session/session-appl-aggregate.png';
 
 # Detailed Design
 
@@ -19,7 +20,7 @@ It also maintains up to date a Session chat, through users can communicate betwe
 
 The Session microservice follows the Clean architecture pattern to maintain separated the code responsibilities and enhance software modularity. The business logic is placed in the domain layer, inside the aggregates previously identified, while the communication is captured by the infrastructure layer.
 
-The application layer contains stateless objects and acts as a middleware between the infrastructure and domain layer.
+The application layer acts as a middleware between the infrastructure and domain layer.
 
 
 ### Design
@@ -53,6 +54,8 @@ Domain events are emitted by the application layer whenever a Command is validat
 - Whenever a *CreateSession* Command is accepted, `SessionService` adds a new Session aggregate to its local Session Repository;
 - An Event Bus is passed as parameter to this new Session, through which it can listen to new Domain events;
 - Each command has a respective Domain event, except *UserTokenCommand* that is used for communication purposes. This means that if a Command is validated by the `SessionService`, the respective Session aggregate is informed and can react according to that event.
+
+<img src={Aggregates} alt="Aggregates" style={{ display: 'block', margin: 'auto' }} />
 
 ![Events](/img/ddd/detailed_design/session/session-events.png)
 

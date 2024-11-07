@@ -11,9 +11,5 @@ interface ISessionService {
 }
 
 
-class SessionService implements ISessionService {}
-
-
-
 
 @enduml
