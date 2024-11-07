@@ -1,0 +1,69 @@
+---
+sidebar_position: 6
+---
+
+# Self Assessment / Validation
+
+
+To enforce code quality, tests have been implemented in each microservice. They ensure the exposed API and the internal business logic work as expected.
+
+In `session-service` and `auth-service` tests leverage the [Mocha](https://www.npmjs.com/package/mocha) API with [Chai](https://www.npmjs.com/package/chai) as BDD assertion library, while `profile-service` makes use of [ScalaTests](https://www.scalatest.org/).
+
+Furthermore, architectural tests are added inside each microservice, except for the Frontend Service, to verify the architecture strictly follows the Clean Architecture. For these tests, the [Dependency Cruiser](https://github.com/sverweij/dependency-cruiser) framework has been adopted. The tests checks that the dependecies between the code modules is respected:
+
+- The Domain layer should not depend on any other layer;
+- The Application layer can only depend on the Domain layer;
+- The Infrastructure layer can only depend on the Application layer and Domain layer.
+
+
+<Summary title="Session Service - Dependency Cruiser Tests">
+```
+module.exports = {
+  forbidden: [
+    {
+      name: 'no-unreachable-from-domain',
+      comment: 'The domain layer should not depend on any other layer',
+      severity: 'error',
+      from: {
+        path: '^(src/domain)'
+      },
+      to: {
+        pathNot: '^(src/domain)'
+      }
+    },
+    {
+      name: 'no-unreachable-from-application',
+      comment: 'The application layer should only depend on the domain layer',
+      severity: 'error',
+      from: {
+        path: '^(src/application)'
+      },
+      to: {
+        pathNot: '^(src/domain)|^(src/application)|^(node_modules/axios)|^(node_modules/js-sha256)'
+      }
+    },
+    {
+      name: 'no-unreachable-from-infrastructure',
+      comment: 'The infrastructure layer should only depend on the domain and application layers',
+      severity: 'error',
+      from: {
+        path: '^(src/infrastructure)'
+      },
+      to: {
+        pathNot: '^(src/domain)|^(src/application)|^(src/infrastructure)|^(node_modules/axios)|^(node_modules/socket.io)'
+      }
+    },
+    {
+      name: 'no-circular',
+      severity: 'warn',
+      comment:
+        'This dependency is part of a circular relationship. You might want to revise ' +
+        'your solution (i.e. use dependency inversion, make sure the modules have a single responsibility) ',
+      from: {},
+      to: {
+        circular: true
+      }
+    },
+    ...
+```
+</Summary>
