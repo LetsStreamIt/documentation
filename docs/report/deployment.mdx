@@ -6,7 +6,7 @@ sidebar_position: 7
 
 It is possible to deploy *Let's Stream It* by either running locally the single services one by one or more easily through [Docker Compose](https://docs.docker.com/compose/).
 
-- To run each single microservice locally follow the instruction given inside each repository `README` ([Session Service](https://github.com/LetsStreamIt/session-service), [Profile Service](https://github.com/LetsStreamIt/profile-service), [Auth Service](https://github.com/LetsStreamIt/auth-service) and [Frontend Service](https://github.com/LetsStreamIt/frontend-service)). Also make sure to run the [MongoDB container](https://hub.docker.com/_/mongo) on port 27017;
+- To run each single microservice locally follow the instruction given inside each repository `README` ([Session Service](https://github.com/LetsStreamIt/session-service), [Profile Service](https://github.com/LetsStreamIt/profile-service), [Auth Service](https://github.com/LetsStreamIt/auth-service) and [Frontend Service](https://github.com/LetsStreamIt/frontend-service)). Also make sure to run the [MongoDB container(s)](https://hub.docker.com/_/mongo) on port 27017 or to specify the correct host and port in the environment variables;
 - To deploy all services at once navigate to the [Bootstrap repository](https://github.com/LetsStreamIt/bootstrap) and follow the provided indications.
 
 In both the cases, the microservices have the following dependencies. In the `docker-compose` file they are guaranteed to be deployed in this sequence by leveraging [healthchecks](https://docs.docker.com/reference/compose-file/services/#healthcheck) and [`depends_on`](https://docs.docker.com/reference/compose-file/services/#depends_on) attributes.
@@ -20,7 +20,7 @@ flowchart LR
 
 <Summary title="Docker Compose file">
 
-```gherkin
+```docker-compose
 x-common-variables: &common-variables
   PROFILE_SERVICE_HOSTNAME: profile-service
   PROFILE_SERVICE_PORT: 3001
