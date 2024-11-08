@@ -10,7 +10,7 @@ class TokenData {
     email: string
 }
 
-interface IAuthRepository {
+interface IUserRepository {
     createUser(email: string, password: string): Promise<IUser>
     findUserByEmail(email: string): Promise<IUser>
     deleteUser(email: string): Promise<void>
@@ -22,10 +22,20 @@ interface IAuthService {
     logout(email: string): Promise<void>
 }
 
+interface IPasswordService {
+    hashPassword(password: string): Promise<string>
+    comparePasswords(password: string, hashedPassword: string): Promise<boolean>
+}
+
 class AuthUseCase {
     register(email: string, password: string): Promise<IUser>
     login(email: string, password: string): Promise<string>
     logout(email: string): Promise<void>
+}
+
+class PasswordUseCase {
+    hashPassword(password: string): Promise<string>
+    comparePasswords(password: string, hashedPassword: string): Promise<boolean>
 }
 
 interface ITokenService {
@@ -42,11 +52,11 @@ class TokenUseCase {
     getData(accessToken: string): Promise<TokenData>
 }
 
-class ProfileRepository {
+interface IProfileRepository {
     createUserProfile(email: string, username: string, accessToken: string): Promise<void>
 }
 
-class ProfileService {
+interface IProfileService {
     createUserProfile(email: string, username: string, accessToken: string): Promise<void>
 }
 
@@ -54,18 +64,20 @@ class ProfileUseCase {
     createUserProfile(email: string, username: string, accessToken: string): Promise<void>
 }
 
-IAuthService o-up- IAuthRepository
+IAuthService o-up- IUserRepository
 AuthUseCase o-up- IAuthService
+PasswordUseCase o-up- IPasswordService
 
 IAuthService o-left- TokenUseCase : uses >
 IAuthService o-right- ProfileUseCase : uses >
+IAuthService o-down- PasswordUseCase : uses >
 
 TokenUseCase o-down- ITokenService
 
-ProfileService o-up- ProfileRepository
-ProfileUseCase o-up- ProfileService
+IProfileService o-up- IProfileRepository
+ProfileUseCase o-up- IProfileService
 
-IAuthRepository -up->  IUser : creates >
+IUserRepository -up->  IUser : creates >
 
 TokenUseCase -up-> TokenData : uses >
 
