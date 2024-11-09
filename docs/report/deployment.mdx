@@ -15,7 +15,9 @@ In both the cases, the microservices have the following dependencies. In the `do
 flowchart LR
     G[down] --> A[mongodb] -- ✅ --> B[auth-service] -- ✅ --> D[frontend-service] --> F[up]
     A -- ✅ --> C[profile-service] -- ✅ --> D
-    G --> E[session-service] --> F
+
+    C -- ✅ --> E[session-service] --> F
+    B -- ✅ --> E
 ```
 
 <Summary title="Docker Compose file">
@@ -47,6 +49,11 @@ services:
     container_name: session-service
     hostname: session-service
     restart: always
+    depends_on:
+      auth-service:
+        condition: service_healthy
+      profile-service:
+        condition: service_healthy
     environment:
       <<: *common-variables
 
