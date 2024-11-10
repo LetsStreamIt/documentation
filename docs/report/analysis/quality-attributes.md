@@ -17,75 +17,44 @@ We have identified the following quality attributes for our system:
 
 ### Operational Properties
 
-
 1. **Availability**:
-
-
-  - Fault tolerance: The system should be able to recover from failures and continue to operate.
-  - Redundancy: The system should have the possibility to use redundant components to ensure availability.
-
-
+   - Fault tolerance: The system should be able to recover from failures and continue to operate.
+   - Redundancy: The system should have the possibility to use redundant components to ensure availability.
 2. **Reliability**:
-
-
-  - Error handling: The system should be able to handle errors gracefully.
-  - Data integrity: The system should ensure that data is consistent and accurate.
-
-
+   - Error handling: The system should be able to handle errors gracefully.
+   - Data integrity: The system should ensure that data is consistent and accurate.
 3. **Performance**:
-
-
-  - Response time: The system should respond to user actions promptly.
-  - Scalability: The system should be able to handle a growing number of users.
-
-
+   - Response time: The system should respond to user actions promptly.
+   - Scalability: The system should be able to handle a growing number of users.
 4. **Deployability**:
-  - Portability: The system should be able to run on different platforms.
-  - Upgradability: The system should automatically deploy new versions.
+   - Portability: The system should be able to run on different platforms.
+   - Upgradability: The system should automatically deploy new versions.
 
 
 ### Structural Properties
 
-
 1. **Modifiability**:
-
-
-  - Extensibility: The system should be able to add new features easily.
-  - Maintainability: The system should be easy to maintain and update.
-
-
+   - Extensibility: The system should be able to add new features easily.
+   - Maintainability: The system should be easy to maintain and update.
 2. **Testability**:
-
-
-  - Observability: The system should be able to provide information about its internal state.
-  - Controllability: The system should be able to be controlled during testing.
-
-
+   - Observability: The system should be able to provide information about its internal state.
+   - Controllability: The system should be able to be controlled during testing.
 3. **Security**:
-
-
-  - Authentication: The system should be able to authenticate users.
-  - Authorization: The system should be able to authorize users to access resources.
-  - Data protection: The system should protect sensitive data.
-
-
+   - Authentication: The system should be able to authenticate users.
+   - Authorization: The system should be able to authorize users to access resources.
+   - Data protection: The system should protect sensitive data.
 4. **Usability**:
-  - Learnability: The system should be easy to learn.
-  - Efficiency: The system should be efficient to use.
-  - Satisfaction: The system should be satisfying to use.
-
+   - Learnability: The system should be easy to learn.
+   - Efficiency: The system should be efficient to use.
+   - Satisfaction: The system should be satisfying to use.
 
 ## Scenarios
 
-
 For some quality attributes, we have defined scenarios to illustrate how they will be achieved.
-
 
 ### Availability
 
-
 #### Scenario 1: Fault Tolerance
-
 
 - **Stimulus Source**: Hardware failure.
 - **Stimulus**: A server node fails.
@@ -96,9 +65,7 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 ### Reliability
 
-
 #### Scenario 1: Error Handling
-
 
 - **Stimulus Source**: User action.
 - **Stimulus**: User enters invalid data.
@@ -108,7 +75,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 
 #### Scenario 2: Data Integrity
-
 
 - **Stimulus Source**: User action.
 - **Stimulus**: User updates their profile.
@@ -122,7 +88,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 #### Scenario 1: Response Time
 
-
 - **Stimulus Source**: User action.
 - **Stimulus**: The user clicks on a button.
 - **Environment**: Normal operation.
@@ -135,7 +100,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 #### Scenario 1: Portability
 
-
 - **Stimulus Source**: Deployment.
 - **Stimulus**: Deploy the system on a new platform.
 - **Environment**: Normal operation.
@@ -144,7 +108,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 
 #### Scenario 2: Upgradability
-
 
 - **Stimulus Source**: Deployment.
 - **Stimulus**: Deploy a new version of the system.
@@ -155,9 +118,7 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 ### Modifiability
 
-
 #### Scenario 1: Extensibility
-
 
 - **Stimulus Source**: New feature request.
 - **Stimulus**: Add a new feature to the system.
@@ -168,7 +129,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 #### Scenario 2: Maintainability
 
-
 - **Stimulus Source**: Bug report.
 - **Stimulus**: Fix a bug in the system.
 - **Environment**: Normal operation.
@@ -177,7 +137,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 
 ### Testability
-
 
 #### Scenario 1: Observability
 
@@ -214,7 +173,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 #### Scenario 2: Authorization
 
-
 - **Stimulus Source**: User action.
 - **Stimulus**: User accesses a protected resource.
 - **Environment**: Normal operation.
@@ -223,7 +181,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 
 #### Scenario 3: Data Protection
-
 
 - **Stimulus Source**: User action.
 - **Stimulus**: User enters sensitive data.
@@ -237,7 +194,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 #### Scenario 1: Learnability
 
-
 - **Stimulus Source**: User action.
 - **Stimulus**: User interacts with the system for the first time.
 - **Environment**: Normal operation.
@@ -247,7 +203,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 #### Scenario 2: Efficiency
 
-
 - **Stimulus Source**: User action.
 - **Stimulus**: User performs a task.
 - **Environment**: Normal operation.
@@ -256,7 +211,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 
 
 #### Scenario 3: Satisfaction
-
 
 - **Stimulus Source**: User action.
 - **Stimulus**: User interacts with the system.
