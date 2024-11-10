@@ -4,12 +4,11 @@ sidebar_position: 6
 
 # Self Assessment / Validation
 
-
 To enforce code quality, tests have been implemented in each microservice. They ensure the exposed API and the internal business logic work as expected.
 
 In `session-service` and `auth-service` tests leverage the [Mocha](https://www.npmjs.com/package/mocha) API with [Chai](https://www.npmjs.com/package/chai) as BDD assertion library, while `profile-service` makes use of [ScalaTests](https://www.scalatest.org/) and [Akka Route TestKit](https://doc.akka.io/libraries/akka-http/current/routing-dsl/testkit.html).
 
-Furthermore, architectural tests are added inside each typescript microservice, except for the Frontend Service, to verify the architecture strictly follows the Clean Architecture. For these tests, the [Dependency Cruiser](https://github.com/sverweij/dependency-cruiser) framework has been adopted. The tests checks that the dependecies between the code modules is respected:
+Furthermore, architectural tests are added inside each typescript microservice, except for the Frontend Service, to verify the architecture strictly follows the Clean Architecture. For these tests, the [Dependency Cruiser](https://github.com/sverweij/dependency-cruiser) framework has been adopted. The tests check that the dependencies between the code modules are respected:
 
 - The Domain layer should not depend on any other layer;
 - The Application layer can only depend on the Domain layer;
