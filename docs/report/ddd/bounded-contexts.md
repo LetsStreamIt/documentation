@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Bounded Contexts
@@ -20,7 +20,7 @@ Commands, Events, and Reactions are grouped based on the aggregate they're relat
 ## Auth
 
 
-The authentication context is responsible for managing user authentication to the LetsStreamIt platform. It manages user registration and login.
+The authentication context is responsible for managing user authentication to the _Let's Stream It_ platform. It manages user registration and login.
 
 
 ### Ubiquitous Language
@@ -37,7 +37,7 @@ The authentication context is responsible for managing user authentication to th
 ## Profile
 
 
-Profile context is responsible for managing the user profile information in the LetsStreamIt platform. It manages the user's username, bio, and watched videos.
+Profile context is responsible for managing the user profile information in the _Let's Stream It_ platform. It manages the user's username, bio, and watched videos.
 
 
 ### Ubiquitous Language
@@ -53,7 +53,7 @@ Profile context is responsible for managing the user profile information in the 
 ## Session
 
 
-Session Service is the core of LetsStreamIt and is responsible for managing a Youtube streaming session.
+Session Service is the core of _Let's Stream It_ and is responsible for managing a Youtube streaming session.
 
 
 It ensures synchronized video playback, in response to play and stop performed by the users. It also manages a chat through which users can communicate with each other while watching the video.

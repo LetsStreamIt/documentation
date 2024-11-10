@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 
@@ -19,7 +19,7 @@ The system will be divided into the following components based on the bounded co
 
 
 - **Frontend service**: This component will be responsible for serving the frontend application to the users. It will handle user interactions and display the content of the application.
-- **Authentication service**: This component will be responsible for handling user authentication and authorization. It will provide endpoints for user registration, login, and logout.
+- **Authentication service**: This component will be responsible for handling user authentication. It will provide endpoints for user registration, login, and logout.
 - **Profile service**: This component will be responsible for managing user profiles. It will provide endpoints for viewing and editing user profiles.
 - **Session service**: This component will be responsible for managing sessions. It will provide endpoints for creating, joining, and leaving sessions. It will also handle video playback synchronization and chat functionality.
 
@@ -45,11 +45,9 @@ Each microservice that requires a database will have its database. This will all
 ## Interactions
 
 
-Each microservice will expose a REST API that other microservices can use to interact with it. The frontend service will interact with the other microservices using their REST APIs. The microservices will interact with each other using REST APIs or message queues.
+Each microservice will expose an API that other microservices can use to interact with it. The frontend service will communicate with the other microservices through their APIs, using either REST or WebSocket protocols. The microservices will interact with each other using those APIs.
 
-
-We decided against using an API gateway for this system because it adds unnecessary complexity.
-Only having 3 microservices, it is not necessary to have an API gateway. We can directly call the microservices from the frontend service. Also, an API gateway would introduce a single point of failure and a performance bottleneck, which would be undesirable for our system.
+It has been decided to not use an API gateway for this system because it adds unnecessary complexity. It's possible to directly call the microservices from the frontend service. Also, an API gateway would introduce a single point of failure and a performance bottleneck, which would be undesirable for the system.
 
 
 ## Architecture

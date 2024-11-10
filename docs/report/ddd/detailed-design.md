@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 
@@ -20,7 +20,7 @@ import AuthPackages from '/img/ddd/detailed_design/auth/packages.png';
 The Session microservice is responsible for managing Youtube streaming sessions. The application synchronizes the video of all the users connected to a session, in response to play/stop/timeline moves actions.
 
 
-It also maintains up-to-date Session chat, through which users can communicate with each other during the streaming.
+It also maintains up-to-date a session chat, through which users can communicate with each other during the streaming.
 
 
 ### Project structure
@@ -110,7 +110,7 @@ In particular, the following Reaction implementations should be embedded inside 
 ## Authentication Microservice
 
 
-The Authentication microservice is responsible for managing the authentication of the users. The application provides a REST API to register and authenticate users and to generate JWT tokens.
+The Authentication microservice is responsible for managing the authentication of the users. The application provides a REST API to register and authenticate users.
 It also manages the token validation and refresh.
 
 
@@ -122,8 +122,11 @@ It also manages the token validation and refresh.
 
 The Authentication microservice follows the Clean architecture pattern to maintain separate code responsibilities and enhance software modularity. The business logic is placed in the domain layer, inside the aggregates previously identified, while the communication is captured by the infrastructure layer.
 
-
-The application layer acts as a middleware between the infrastructure and domain layer. The infrastructure layer is responsible for the communication with the database and the JWT token generation. The domain layer is responsible for the business logic. The presentation layer is responsible for the REST API.
+In particular:
+- The application layer acts as a middleware between the infrastructure and domain layer;
+- The infrastructure layer is responsible for the communication with the database and the JWT token generation;
+- The domain layer is responsible for the business logic;
+- The presentation layer is responsible for the REST API.
 
 
 ![Auth-Classes](/img/ddd/detailed_design/auth/auth-class.svg)
@@ -135,8 +138,8 @@ The application layer acts as a middleware between the infrastructure and domain
 The software needs to manage the authentication of the users. The possible actions are:
 
 
-- _Register_: the user wants to register to the application;
-- _Login_: the user wants to log in to the application;
+- _Register_: the user wants to register to the system;
+- _Login_: the user wants to log in to the system;
 - _Logout_: the user wants to log out of the system.
 
 
@@ -145,7 +148,7 @@ Some additional actions are:
 
 - _ValidateToken_: to validate the token;
 - _RefreshToken_: to refresh the token;
-- _GetData_: to get the user’s data from the token.
+- _GetData_: to get the user’s data given the token.
 
 
 ## Profile Microservice

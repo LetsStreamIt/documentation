@@ -1,26 +1,26 @@
 ---
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 # Microservices Design
 
-After identifying the application requirements and the main components of the architecture, we can now define the microservices design of the system.
+After identifying the application requirements and the main components of the architecture, in this section, the microservices design of the system is defined.
 
-Each service will be responsible for a specific set of features and will communicate with other services through well-defined APIs. This will allow us to develop and deploy each service independently, making it easier to scale the system and add new features in the future.
+Each service is responsible for a specific set of features and communicates with other services through well-defined APIs. This allows to develop and deploy each service independently, enhancing scalability.
 
-The decomposition of the system allows us to use different technologies for each service, as well as to scale each service independently based on its specific requirements.
+Furthermore, the decomposition of the system in microservices allows the project to be easily extended, maintained, and tested.
 
 ## API Design
 
-Each microservice will either expose a REST API or a WebSocket API for communication with other services. The API will be designed to be simple, consistent, and easy to use. We will follow RESTful design principles for the REST APIs and use WebSockets for real-time communication between services.
+Each microservice either exposes a REST or WebSocket API for communication with other services. The APIs are designed to be simple, consistent, and easy to use.
 
-The API will be versioned to ensure backward compatibility and allow for future changes without breaking existing clients.
+The APIs are versioned to ensure backward compatibility and to allow future changes to be made without breaking existing clients.
 
-The API will be documented using OpenAPI (formerly known as Swagger) to provide a clear and comprehensive reference for developers who want to integrate with the system.
+The APIs are documented using either OpenAPI (formerly known as Swagger) or Async API to provide a clear and comprehensive reference for developers who want to integrate with the system.
 
 ### Auth Service
 
-The Auth service will expose a REST API for user authentication and authorization. It will provide endpoints for user registration, login, and logout.
+The Auth service exposes a REST API for user authentication. It provides endpoints for user registration, login, and logout.
 
 <Summary title="Feature: Authentication">
 
@@ -53,7 +53,7 @@ Then I should be logged out successfully
 
 ### Profile Service
 
-The Profile service will expose a REST API for managing user profiles. It will provide endpoints for viewing and editing user profiles.
+The Profile service exposes a REST API for managing user profiles. It provides endpoints for viewing and modifying user information.
 
 <Summary title="Feature: Profile">
 
@@ -81,7 +81,7 @@ Then My user profile should be updated
 
 ### Session Service
 
-The Session service will expose a WebSocket API for managing sessions. It will provide endpoints for creating, joining, and leaving sessions. It will also handle video playback synchronization and chat functionality.
+The Session service exposes a WebSocket API for managing sessions. It provides endpoints for creating, joining, and leaving sessions. It also handles video playback synchronization and chat functionalities.
 
 <Summary title="Feature: Session">
 
@@ -128,7 +128,7 @@ Then I should receive the Youtube video Id
 ![Clean Architecture](/img/ddd/detailed_design/clean_architecture.png)
 
 The design of all the microservices follow the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
-This architecture allows to separate the domain from the implementation details. The architecture is composed of multiple layers and is based on the *Dependency Rule*,
+This architecture allows to separate the domain from the technical details. The architecture is composed of multiple layers and is based on the *Dependency Rule*,
 i.e. each layer can only depend on the inner layers. The adopted layers are the following:
 - Domain. It's the innermost layer and should contain the business logic of the microservice. It comprises DDD aggregates, value objects, entities, factories and repositories;
 - Application. Should contain services;

@@ -14,7 +14,7 @@ sidebar_position: 5
 
 In each microservice, the adopted development process follows [Trunk-based development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development):
 - Each repository uses the `main` branch as the stable branch, containing working code;
-- A small increment in the project such as features/fixes/chores are pushed in a separate, dedicated branch, and then merged into the main branch via Pull Requests (PR), whenever ready. The PRs don't require acceptance from other team members to be merged, but the CI/CD pipeline to succeed. This ensures that the stable branch is clean from errors.
+- A small increment in the project such as features/fixes/chores are pushed in a separate, dedicated branch, and then merged into the main branch via Pull Requests (PR), whenever ready. The PRs are configured to not require code reviews from other team members to be merged, but the CI/CD pipeline to succeed. This ensures that the stable branch is clean from errors.
 
 
 ### Conventional Commits

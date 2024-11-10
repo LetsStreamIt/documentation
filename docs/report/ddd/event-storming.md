@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Event Storming
@@ -31,7 +31,7 @@ The domain events defined in the previous sections are ordered by time and arrow
 
 
 
-## Pan Points
+## Pain Points
 
 
 The team members should spot potential problems that can occur in the system and may need special attention.
@@ -39,7 +39,7 @@ The team members should spot potential problems that can occur in the system and
 
 
 
-![Pan Points](/img/ddd/event_storming/pan_points.jpg)
+![Pain Points](/img/ddd/event_storming/pan_points.jpg)
 
 
 

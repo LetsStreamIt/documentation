@@ -9,9 +9,6 @@ sidebar-position: 3
 Quality attributes are the non-functional requirements that define the overall quality of the system and how it delivers its functionalities.
 
 
-We have identified the following quality attributes for our system:
-
-
 ## Quality Attributes Overview
 
 
@@ -19,14 +16,10 @@ We have identified the following quality attributes for our system:
 
 1. **Availability**:
    - Fault tolerance: The system should be able to recover from failures and continue to operate.
-   - Redundancy: The system should have the possibility to use redundant components to ensure availability.
 2. **Reliability**:
    - Error handling: The system should be able to handle errors gracefully.
    - Data integrity: The system should ensure that data is consistent and accurate.
-3. **Performance**:
-   - Response time: The system should respond to user actions promptly.
-   - Scalability: The system should be able to handle a growing number of users.
-4. **Deployability**:
+3. **Deployability**:
    - Portability: The system should be able to run on different platforms.
    - Upgradability: The system should automatically deploy new versions.
 
@@ -60,7 +53,7 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 - **Stimulus**: A server node fails.
 - **Environment**: Normal operation.
 - **Artifact**: Server node.
-- **Response**: The system detects the failure and redirects the traffic to another server node.
+- **Response**: The system detects the failure and restarts the server node.
 
 
 ### Reliability
@@ -81,18 +74,6 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 - **Environment**: Normal operation.
 - **Artifact**: System.
 - **Response**: The system updates the user's profile without data loss.
-
-
-### Performance
-
-
-#### Scenario 1: Response Time
-
-- **Stimulus Source**: User action.
-- **Stimulus**: The user clicks on a button.
-- **Environment**: Normal operation.
-- **Artifact**: System.
-- **Response**: The system responds to the user's action within 1 second.
 
 
 ### Deployability
@@ -198,7 +179,7 @@ For some quality attributes, we have defined scenarios to illustrate how they wi
 - **Stimulus**: User interacts with the system for the first time.
 - **Environment**: Normal operation.
 - **Artifact**: System.
-- **Response**: The user learns how to use the system within 5 minutes.
+- **Response**: The user quickly learns how to use the system.
 
 
 #### Scenario 2: Efficiency
