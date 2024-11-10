@@ -72,6 +72,16 @@ The configuration for the Authentication Service is similar to the one above, wi
 ## End-to-End Testing
 
 To validate the whole system, end-to-end tests have been implemented and have been placed in the [Bootstrap](https://github.com/LetsStreamIt/bootstrap) repository.
-They are written in Typescript and use the [Playwright](https://playwright.dev/) library to interact with the Frontend Service and the microservices.
+They are written in Typescript and use the [Playwright](https://playwright.dev/) library to interact with the Frontend Service and the microservices. 
+
+The tests check the following scenarios:
+- The user can sign up and log in;
+- The user can create and join a session;
+- The user can view and update its profile.
+
+The tests are run on the following browsers:
+- Chromium
+- Firefox
+- WebKit
 
 In combination with [Mend Renovate](https://www.mend.io/renovate/) and [GitHub Actions](https://github.com/features/actions), the tests are executed automatically on every release of any microservice. This ensures that the Let's Stream It system is always working as expected.
